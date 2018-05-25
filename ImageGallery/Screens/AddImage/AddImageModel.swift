@@ -10,20 +10,34 @@ import Foundation
 
 protocol AddImageModelType {
     var imageData: Data? { get set }
+    var longitude: Double? { get set }
+    var latitude: Double? { get set }
     
     func uploadImage(imageForm: ImageForm, completion: @escaping ImageCompletionType)
 }
 
 class AddImageModel: AddImageModelType {
     var imagesProvider: ImagesProviderType
+    var locationService: LocationService
+    
+    var longitude: Double?
+    var latitude: Double?
     var imageData: Data?
     
-    init(imagesProvider: ImagesProviderType) {
+    init(imagesProvider: ImagesProviderType, locationService: LocationService) {
         self.imagesProvider = imagesProvider
+        self.locationService = locationService
+        
+        self.locationService.subscribeOnLocationChanges(closure: { location in
+            self.latitude = location.coordinate.latitude
+            self.longitude = location.coordinate.longitude
+        })
+        
+        locationService.startRetrieveLocation()
     }
     
     func uploadImage(imageForm: ImageForm, completion: @escaping ImageCompletionType) {
-        imagesProvider.loadImage(imageForm: imageForm, completion: { [weak self] result in
+        imagesProvider.uploadImage(imageForm: imageForm, completion: { [weak self] result in
             guard let `self` = self else { return }
             
             switch result {
@@ -42,6 +56,7 @@ class AddImageModel: AddImageModelType {
 
 class AddImageModelFactory {
     static func `default`(provider: ImagesProviderType) -> AddImageModel {
-        return AddImageModel(imagesProvider: provider)
+        return AddImageModel(imagesProvider: provider,
+                             locationService: LocationServiceFactory.default())
     }
 }

@@ -19,7 +19,7 @@ class AddImageRequest: BaseRequest {
     
     override func headers() -> HTTPHeaders? {
         return [
-            "Content-Type":"application/x-www-form-urlencoded",
+            "Content-type": "multipart/form-data",
             "token": token]
     }
     
@@ -30,7 +30,8 @@ class AddImageRequest: BaseRequest {
     override func parameters() -> Parameters {
         var parameters = Parameters()
         
-        parameters["image"] = imageForm.image
+        parameters["_format"] = "json"
+        //parameters["image"] = imageForm.image
         
         if let description = imageForm.description {
             parameters["description"] = description
@@ -41,7 +42,7 @@ class AddImageRequest: BaseRequest {
         }
         
         parameters["latitude"] = imageForm.latitude
-        parameters["longtitude"] = imageForm.longitude
+        parameters["longitude"] = imageForm.longitude
         
         return parameters
     }

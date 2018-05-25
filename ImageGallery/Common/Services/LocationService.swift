@@ -23,11 +23,11 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     
     var delegate: LocationServiceProtocol?
     
+    fileprivate var closure: ((CLLocation) -> ())?
     private var locationManager: CLLocationManager
     private var isInitialCoordinates: Bool = true
     
     override init() {
-        
         locationManager = CLLocationManager()
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
@@ -55,6 +55,12 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
             isInitialCoordinates = false
         }
+        
+        self.closure?(userLocation)
+    }
+    
+    func subscribeOnLocationChanges(closure : @escaping (CLLocation) -> ()) {
+        self.closure = closure
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

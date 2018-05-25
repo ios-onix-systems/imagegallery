@@ -68,6 +68,7 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate {
     deinit {
         print("RegisterViewController - deinit")
     }
+    
 }
 
 extension RegisterViewController {
@@ -103,8 +104,16 @@ extension RegisterViewController: UIImagePickerControllerDelegate {
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])  {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            viewModel.avatar = UIImagePNGRepresentation(pickedImage)
-            self.avatarImageView.image = pickedImage
+            if let image = ImageResizer.resizeImage(image: pickedImage, targetSize: CGSize(width: 600, height: 400)) {
+                viewModel.avatar = UIImagePNGRepresentation(image)
+                self.avatarImageView.image = image
+            } else {
+                viewModel.avatar = UIImagePNGRepresentation(pickedImage)
+                self.avatarImageView.image = pickedImage
+            }
+            
+//            viewModel.avatar = UIImagePNGRepresentation(pickedImage)
+//            self.avatarImageView.image = pickedImage
         }
         
         dismiss(animated: true, completion: nil)

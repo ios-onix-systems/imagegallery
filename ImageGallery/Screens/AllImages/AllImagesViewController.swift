@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class AllImagesViewController: UIViewController {
     
@@ -46,17 +47,33 @@ class AllImagesViewController: UIViewController {
     }
     
     private func setupNavigationController() {
-        self.navigationController?.navigationBar.isHidden = true
+        
     }
     
     @IBAction func playTouchUpInside(_ sender: UIButton) {
-    
+        if let controller: ShowGifViewController = Storyboard.main.instantiateViewController() {
+            
+            let navController = UINavigationController(rootViewController: controller)
+            navController.modalPresentationStyle = .overCurrentContext
+            navController.modalTransitionStyle = .crossDissolve
+            navController.navigationBar.isHidden = true
+            controller.modalPresentationStyle = .overCurrentContext
+            
+            controller.viewModel = ShowGifModelFactory.default(provider: viewModel.imagesProvider)
+            self.navigationController?.present(navController, animated: true, completion: nil)
+        }
     }
     
     @IBAction func plusTouchUpInside(_ sender: UIButton) {
         if let controller: AddImageViewController = Storyboard.main.instantiateViewController() {
             controller.viewModel = AddImageModelFactory.default(provider: viewModel.imagesProvider)
             self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+   
+    @IBAction func logoutTouchUpInside(_ sender: UIButton) {
+        if let controller: LoginViewController = Storyboard.landing.instantiateViewController() {
+            navigationController?.setViewControllers([controller], animated: true)
         }
     }
     

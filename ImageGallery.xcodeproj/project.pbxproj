@@ -8,9 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		3DF874D4E068B5041D9C5B08 /* Pods_ImageGallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DD15CA869598AE2B87CD068 /* Pods_ImageGallery.framework */; };
-		E548399320B5CDFC0099541D /* RegistrationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E548399220B5CDFC0099541D /* RegistrationError.swift */; };
+		E537770620B836BF007E778E /* GIFModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E537770520B836BF007E778E /* GIFModel.swift */; };
+		E53F225620B823BD00181087 /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53F225520B823BD00181087 /* ImageResizer.swift */; };
+		E53F225A20B82AD800181087 /* ImageUploadError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53F225920B82AD800181087 /* ImageUploadError.swift */; };
+		E53F225C20B8307F00181087 /* RegistrationErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53F225B20B8307F00181087 /* RegistrationErrors.swift */; };
+		E53F225E20B8316500181087 /* ShowGifViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53F225D20B8316500181087 /* ShowGifViewController.swift */; };
+		E53F226120B8317800181087 /* ShowGifModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53F226020B8317800181087 /* ShowGifModel.swift */; };
+		E5826D4420B83F9700676611 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5826D4320B83F9700676611 /* ImageLoader.swift */; };
 		E5870CED20B5657F004C1A5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5870CEC20B5657F004C1A5E /* AppDelegate.swift */; };
-		E5870CEF20B5657F004C1A5E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5870CEE20B5657F004C1A5E /* ViewController.swift */; };
 		E5870CF520B5657F004C1A5E /* ImageGallery.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E5870CF320B5657F004C1A5E /* ImageGallery.xcdatamodeld */; };
 		E5870CF720B5657F004C1A5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5870CF620B5657F004C1A5E /* Assets.xcassets */; };
 		E5870D0520B5657F004C1A5E /* ImageGalleryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5870D0420B5657F004C1A5E /* ImageGalleryTests.swift */; };
@@ -19,7 +24,6 @@
 		E5870D2820B56640004C1A5E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5870D2320B5663F004C1A5E /* Image.swift */; };
 		E5870D2920B56640004C1A5E /* UserForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5870D2420B5663F004C1A5E /* UserForm.swift */; };
 		E5870D2A20B56640004C1A5E /* AuthInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5870D2520B56640004C1A5E /* AuthInfo.swift */; };
-		E5870D2B20B56640004C1A5E /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5870D2620B56640004C1A5E /* APIError.swift */; };
 		E5870D2C20B56640004C1A5E /* ImageForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5870D2720B56640004C1A5E /* ImageForm.swift */; };
 		E5870D3020B5664A004C1A5E /* ImagesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5870D2D20B56649004C1A5E /* ImagesList.swift */; };
 		E5870D3120B5664A004C1A5E /* ImagesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5870D2E20B5664A004C1A5E /* ImagesProvider.swift */; };
@@ -66,10 +70,15 @@
 /* Begin PBXFileReference section */
 		6DD15CA869598AE2B87CD068 /* Pods_ImageGallery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageGallery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4950105F6CF4D270FFF4102 /* Pods-ImageGallery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageGallery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImageGallery/Pods-ImageGallery.debug.xcconfig"; sourceTree = "<group>"; };
-		E548399220B5CDFC0099541D /* RegistrationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationError.swift; sourceTree = "<group>"; };
+		E537770520B836BF007E778E /* GIFModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFModel.swift; sourceTree = "<group>"; };
+		E53F225520B823BD00181087 /* ImageResizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
+		E53F225920B82AD800181087 /* ImageUploadError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadError.swift; sourceTree = "<group>"; };
+		E53F225B20B8307F00181087 /* RegistrationErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationErrors.swift; sourceTree = "<group>"; };
+		E53F225D20B8316500181087 /* ShowGifViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowGifViewController.swift; sourceTree = "<group>"; };
+		E53F226020B8317800181087 /* ShowGifModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowGifModel.swift; sourceTree = "<group>"; };
+		E5826D4320B83F9700676611 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		E5870CE920B5657F004C1A5E /* ImageGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5870CEC20B5657F004C1A5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E5870CEE20B5657F004C1A5E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E5870CF420B5657F004C1A5E /* ImageGallery.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ImageGallery.xcdatamodel; sourceTree = "<group>"; };
 		E5870CF620B5657F004C1A5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5870CFB20B5657F004C1A5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,7 +90,6 @@
 		E5870D2320B5663F004C1A5E /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		E5870D2420B5663F004C1A5E /* UserForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserForm.swift; sourceTree = "<group>"; };
 		E5870D2520B56640004C1A5E /* AuthInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthInfo.swift; sourceTree = "<group>"; };
-		E5870D2620B56640004C1A5E /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		E5870D2720B56640004C1A5E /* ImageForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageForm.swift; sourceTree = "<group>"; };
 		E5870D2D20B56649004C1A5E /* ImagesList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesList.swift; sourceTree = "<group>"; };
 		E5870D2E20B5664A004C1A5E /* ImagesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesProvider.swift; sourceTree = "<group>"; };
@@ -152,6 +160,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E53F225F20B8316900181087 /* ShowGif */ = {
+			isa = PBXGroup;
+			children = (
+				E53F226020B8317800181087 /* ShowGifModel.swift */,
+				E53F225D20B8316500181087 /* ShowGifViewController.swift */,
+			);
+			path = ShowGif;
+			sourceTree = "<group>";
+		};
 		E5870CE020B5657F004C1A5E = {
 			isa = PBXGroup;
 			children = (
@@ -183,7 +200,6 @@
 				E5870D1020B56596004C1A5E /* Resources */,
 				E5870D0F20B5658C004C1A5E /* Screens */,
 				E5870CEC20B5657F004C1A5E /* AppDelegate.swift */,
-				E5870CEE20B5657F004C1A5E /* ViewController.swift */,
 				E5870CF320B5657F004C1A5E /* ImageGallery.xcdatamodeld */,
 			);
 			path = ImageGallery;
@@ -201,10 +217,11 @@
 		E5870D0F20B5658C004C1A5E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				E5870D1120B565A9004C1A5E /* AddImage */,
+				E5870D1220B565AF004C1A5E /* AllImages */,
 				E5870D1420B565BA004C1A5E /* Login */,
 				E5870D1320B565B5004C1A5E /* Register */,
-				E5870D1220B565AF004C1A5E /* AllImages */,
-				E5870D1120B565A9004C1A5E /* AddImage */,
+				E53F225F20B8316900181087 /* ShowGif */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -296,13 +313,14 @@
 		E5870D1920B565ED004C1A5E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E5870D2620B56640004C1A5E /* APIError.swift */,
 				E5870D2520B56640004C1A5E /* AuthInfo.swift */,
+				E537770520B836BF007E778E /* GIFModel.swift */,
 				E5870D2320B5663F004C1A5E /* Image.swift */,
 				E5870D2720B56640004C1A5E /* ImageForm.swift */,
-				E5870D2420B5663F004C1A5E /* UserForm.swift */,
 				E5870D2D20B56649004C1A5E /* ImagesList.swift */,
-				E548399220B5CDFC0099541D /* RegistrationError.swift */,
+				E53F225920B82AD800181087 /* ImageUploadError.swift */,
+				E53F225B20B8307F00181087 /* RegistrationErrors.swift */,
+				E5870D2420B5663F004C1A5E /* UserForm.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -335,6 +353,8 @@
 				E5870D3F20B56661004C1A5E /* AlertHelper.swift */,
 				E5870D4120B56662004C1A5E /* Defines.swift */,
 				E5870D4220B56662004C1A5E /* HUDRenderer.swift */,
+				E5826D4320B83F9700676611 /* ImageLoader.swift */,
+				E53F225520B823BD00181087 /* ImageResizer.swift */,
 				E5870D4420B56662004C1A5E /* Storyboard.swift */,
 				E5870D4020B56662004C1A5E /* UIDevice.swift */,
 				E5870D4320B56662004C1A5E /* ValidationHelper.swift */,
@@ -412,6 +432,11 @@
 					E5870CE820B5657F004C1A5E = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					E5870CFF20B5657F004C1A5E = {
 						CreatedOnToolsVersion = 9.2;
@@ -498,6 +523,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftGifOrigin/SwiftGifOrigin.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -512,6 +538,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGifOrigin.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -529,17 +556,19 @@
 				E5870D5520B5677F004C1A5E /* AddImageViewController.swift in Sources */,
 				E5870D5220B56678004C1A5E /* UserService.swift in Sources */,
 				E5870D2920B56640004C1A5E /* UserForm.swift in Sources */,
+				E53F225E20B8316500181087 /* ShowGifViewController.swift in Sources */,
 				E5870D2C20B56640004C1A5E /* ImageForm.swift in Sources */,
+				E537770620B836BF007E778E /* GIFModel.swift in Sources */,
 				E5870D3120B5664A004C1A5E /* ImagesProvider.swift in Sources */,
-				E5870CEF20B5657F004C1A5E /* ViewController.swift in Sources */,
 				E5870D4A20B56662004C1A5E /* Storyboard.swift in Sources */,
 				E5870D5620B5677F004C1A5E /* AddImageModel.swift in Sources */,
 				E5870D3020B5664A004C1A5E /* ImagesList.swift in Sources */,
 				E5870D4920B56662004C1A5E /* ValidationHelper.swift in Sources */,
 				E5870D5120B56678004C1A5E /* LocationService.swift in Sources */,
+				E53F225620B823BD00181087 /* ImageResizer.swift in Sources */,
 				E5870D3C20B56655004C1A5E /* AddImage.swift in Sources */,
-				E548399320B5CDFC0099541D /* RegistrationError.swift in Sources */,
 				E5870D5D20B5679E004C1A5E /* RegisterViewController.swift in Sources */,
+				E53F225A20B82AD800181087 /* ImageUploadError.swift in Sources */,
 				E5870D4820B56662004C1A5E /* HUDRenderer.swift in Sources */,
 				E5870D3B20B56655004C1A5E /* BaseRequest.swift in Sources */,
 				E5870CED20B5657F004C1A5E /* AppDelegate.swift in Sources */,
@@ -548,6 +577,7 @@
 				E5870D2220B56633004C1A5E /* ImageCollectionViewCell.swift in Sources */,
 				E5870D5020B56678004C1A5E /* CredentialsService.swift in Sources */,
 				E5870D4520B56662004C1A5E /* AlertHelper.swift in Sources */,
+				E53F226120B8317800181087 /* ShowGifModel.swift in Sources */,
 				E5870D3A20B56655004C1A5E /* Login.swift in Sources */,
 				E5870D3E20B56655004C1A5E /* GetImages.swift in Sources */,
 				E5870D3D20B56655004C1A5E /* CreateGIF.swift in Sources */,
@@ -558,10 +588,11 @@
 				E5870D4C20B56672004C1A5E /* ServiceHolder.swift in Sources */,
 				E5870CF520B5657F004C1A5E /* ImageGallery.xcdatamodeld in Sources */,
 				E5870D6420B567A6004C1A5E /* LoginModel.swift in Sources */,
+				E53F225C20B8307F00181087 /* RegistrationErrors.swift in Sources */,
 				E5870D5E20B5679E004C1A5E /* RegisterModel.swift in Sources */,
-				E5870D2B20B56640004C1A5E /* APIError.swift in Sources */,
 				E5870D2820B56640004C1A5E /* Image.swift in Sources */,
 				E5870D2A20B56640004C1A5E /* AuthInfo.swift in Sources */,
+				E5826D4420B83F9700676611 /* ImageLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -697,6 +728,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GJX986XEH7;
 				INFOPLIST_FILE = "$(SRCROOT)/ImageGallery/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -713,6 +745,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GJX986XEH7;
 				INFOPLIST_FILE = "$(SRCROOT)/ImageGallery/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

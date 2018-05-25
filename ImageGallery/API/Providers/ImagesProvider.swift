@@ -9,6 +9,11 @@
 import Foundation
 import Alamofire
 
+enum GIFResult {
+    case result(GIFModel)
+    case error(Error)
+}
+
 enum ImageResult {
     case result(Image)
     case error(Error)
@@ -21,12 +26,14 @@ enum ImagesResult {
 
 typealias ImageCompletionType = (ImageResult) -> ()
 typealias ImagesCompletionType = (ImagesResult) -> ()
+typealias GIFCompletionType = (GIFResult) -> ()
 
 protocol ImagesProviderType {
     var token: AuthInfo { get }
     
-    func loadImage(imageForm: ImageForm, completion: @escaping ImageCompletionType)
+    func uploadImage(imageForm: ImageForm, completion: @escaping ImageCompletionType)
     func all(completion: @escaping ImagesCompletionType)
+    func getGif(completion: @escaping GIFCompletionType)
 }
 
 class ImagesProvider: ImagesProviderType {
@@ -58,10 +65,64 @@ class ImagesProvider: ImagesProviderType {
             })
     }
     
-    func loadImage(imageForm: ImageForm, completion: @escaping ImageCompletionType) {
+    func uploadImage(imageForm: ImageForm, completion: @escaping ImageCompletionType) {
         let request = AddImageRequest(token: token.token, imageData: imageForm)
         
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            multipartFormData.append(imageForm.image, withName: "image", fileName: "image.png", mimeType: "image/png")
+            
+            for (key, value) in request.parameters() {
+                multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
+            }
+            
+        }, usingThreshold: UInt64.init(), to: request.url, method: request.method, headers: request.headers()) { (result) in
+            switch result{
+            case .success(let upload, _, _):
+                upload.responseJSON { response in
+                    guard let data = response.data else { return }
+                    
+                    if let parsedData = try? JSONDecoder().decode(Image.self, from: data) {
+                        completion(.result(parsedData))
+                    } else {
+                        if let error = try? JSONDecoder().decode(ImageUploadErrror.self, from: data) {
+                            completion(.error(NSError(domain: error.errors.joined(separator: ","), code: -1, userInfo: nil)))
+                        } else {
+                            completion(.error(NSError(domain: "Error", code: -1, userInfo: nil)))
+                        }
+                        completion(.error(NSError(domain: "Error", code: -1, userInfo: nil)))
+                    }
+                    
+                    if let err = response.error{
+                        completion(.error(err))
+                    }
+                }
+            case .failure(let error):
+                completion(.error(NSError(domain: "Couldn't upload image. Unrecognized error", code: -1, userInfo: nil)))
+            }
+        }
+    }
+    
+    func getGif(completion: @escaping GIFCompletionType) {
+        let request = GetGifRequest(token: token.token)
         
+        Alamofire.request(request.url, method: request.method, parameters: request.parameters(), encoding: request.parametersEncoding, headers: request.headers())
+            .responseJSON(completionHandler: { [weak self] responce in
+                guard let `self` = self else { return }
+                
+                switch responce.result {
+                case .success(let data):
+                    guard let data = responce.data else { return }
+                    
+                    if let parsedData = try? JSONDecoder().decode(GIFModel.self, from: data) {
+                        completion(.result(parsedData))
+                    } else {
+                        completion(.error(NSError(domain: "Error", code: -1, userInfo: nil)))
+                    }
+                case .failure(let error):
+                    
+                    completion(.error(error))
+                }
+            })
     }
     
 }

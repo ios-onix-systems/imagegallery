@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ccD-Vu-X5F">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,16 +24,16 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hK4-VJ-fSX">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="566.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="588.5"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="UserPlaceholderIcon" translatesAutoresizingMaskIntoConstraints="NO" id="aQG-Vi-5KV">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="CameraPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="aQG-Vi-5KV">
                                                 <rect key="frame" x="75" y="77" width="240" height="128"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="200" id="LFz-s4-uu2"/>
+                                                    <constraint firstAttribute="width" secondItem="aQG-Vi-5KV" secondAttribute="height" multiplier="1:1" id="jHC-Ip-XvU"/>
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LAv-xm-B1z" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="50" y="278" width="275" height="40"/>
+                                                <rect key="frame" x="37.5" y="300" width="300" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="dnt-6b-ngE"/>
@@ -66,7 +67,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OMM-Sr-if2" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="50" y="348.5" width="275" height="40"/>
+                                                <rect key="frame" x="37.5" y="370.5" width="300" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="xAi-PP-gKd"/>
@@ -100,7 +101,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QT4-wI-Tzb" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="50" y="418.5" width="275" height="40"/>
+                                                <rect key="frame" x="37.5" y="440.5" width="300" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="xwp-j4-8cg"/>
@@ -134,7 +135,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uye-7n-XMm">
-                                                <rect key="frame" x="50" y="498.5" width="275" height="48"/>
+                                                <rect key="frame" x="37.5" y="520.5" width="300" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="88y-N2-S2Z"/>
@@ -142,6 +143,11 @@
                                                 <state key="normal" title="SEND">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="sendButtonTouchUpInside:" destination="t6D-st-m5l" eventType="touchUpInside" id="sG2-yX-bVO"/>
                                                 </connections>
@@ -152,16 +158,16 @@
                                             <constraint firstItem="OMM-Sr-if2" firstAttribute="top" secondItem="LAv-xm-B1z" secondAttribute="bottom" constant="30" id="0Vk-gl-2fK"/>
                                             <constraint firstItem="aQG-Vi-5KV" firstAttribute="top" secondItem="hK4-VJ-fSX" secondAttribute="top" constant="50" id="1Qy-9N-F6n"/>
                                             <constraint firstItem="QT4-wI-Tzb" firstAttribute="top" secondItem="OMM-Sr-if2" secondAttribute="bottom" constant="30" id="33h-n1-udH"/>
-                                            <constraint firstItem="LAv-xm-B1z" firstAttribute="leading" secondItem="hK4-VJ-fSX" secondAttribute="leading" constant="50" id="4A4-fR-vZB"/>
-                                            <constraint firstAttribute="trailing" secondItem="LAv-xm-B1z" secondAttribute="trailing" constant="50" id="4he-4c-EoL"/>
                                             <constraint firstItem="Uye-7n-XMm" firstAttribute="leading" secondItem="QT4-wI-Tzb" secondAttribute="leading" id="8Sx-Fe-sjs"/>
                                             <constraint firstItem="Uye-7n-XMm" firstAttribute="top" secondItem="QT4-wI-Tzb" secondAttribute="bottom" constant="40" id="9q7-kf-nwl"/>
+                                            <constraint firstItem="LAv-xm-B1z" firstAttribute="leading" secondItem="hK4-VJ-fSX" secondAttribute="leading" constant="37.5" id="B59-uw-7dV"/>
                                             <constraint firstItem="QT4-wI-Tzb" firstAttribute="leading" secondItem="OMM-Sr-if2" secondAttribute="leading" id="Ete-rd-FRy"/>
                                             <constraint firstItem="aQG-Vi-5KV" firstAttribute="centerX" secondItem="hK4-VJ-fSX" secondAttribute="centerX" id="FxT-YQ-rug"/>
+                                            <constraint firstAttribute="trailing" secondItem="LAv-xm-B1z" secondAttribute="trailing" constant="37.5" id="Qid-J4-FA2"/>
                                             <constraint firstItem="OMM-Sr-if2" firstAttribute="trailing" secondItem="LAv-xm-B1z" secondAttribute="trailing" id="Qj6-Nc-AL6"/>
                                             <constraint firstItem="QT4-wI-Tzb" firstAttribute="trailing" secondItem="OMM-Sr-if2" secondAttribute="trailing" id="TJo-vR-yQB"/>
-                                            <constraint firstAttribute="bottom" secondItem="Uye-7n-XMm" secondAttribute="bottom" constant="20" id="Tun-ok-8Mt"/>
-                                            <constraint firstItem="aQG-Vi-5KV" firstAttribute="width" secondItem="hK4-VJ-fSX" secondAttribute="width" multiplier="0.6" id="VWN-us-mqJ"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Uye-7n-XMm" secondAttribute="bottom" constant="20" id="Tun-ok-8Mt"/>
+                                            <constraint firstItem="aQG-Vi-5KV" firstAttribute="width" secondItem="hK4-VJ-fSX" secondAttribute="width" multiplier="0.8" id="VWN-us-mqJ"/>
                                             <constraint firstItem="OMM-Sr-if2" firstAttribute="leading" secondItem="LAv-xm-B1z" secondAttribute="leading" id="d4p-z8-Z9k"/>
                                             <constraint firstItem="LAv-xm-B1z" firstAttribute="top" secondItem="aQG-Vi-5KV" secondAttribute="bottom" constant="50" id="lJb-Zh-P35"/>
                                             <constraint firstItem="Uye-7n-XMm" firstAttribute="trailing" secondItem="QT4-wI-Tzb" secondAttribute="trailing" id="wdx-fb-pCt"/>
@@ -203,7 +209,7 @@
             <objects>
                 <navigationController id="ccD-Vu-X5F" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="skF-lv-jON">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -305,6 +311,11 @@
                                                 <state key="normal" title="SEND">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="sendTouchUpInside:" destination="6P2-Y0-Ltu" eventType="touchUpInside" id="1DN-ca-Fqo"/>
                                                 </connections>
@@ -318,6 +329,11 @@
                                                 <state key="normal" title="REGISTER">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="registerTouchUpInside:" destination="6P2-Y0-Ltu" eventType="touchUpInside" id="D95-4W-n1X"/>
                                                 </connections>
@@ -371,6 +387,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="UserPlaceholderIcon" width="128" height="128"/>
+        <image name="CameraPlaceholder" width="256" height="256"/>
     </resources>
 </document>

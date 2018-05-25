@@ -33,8 +33,8 @@ class ImageListItemModel: ImageListItemModelType {
     
     init(with model: Image) {
         self.address = model.address
-        self.weather = model.weather
-        self.imageUrl = model.bigImagePath
+        self.weather = model.weather ?? ""
+        self.imageUrl = model.bigImagePath ?? ""
     }
     
     func subscribeOnImageLoading(completion: @escaping UIImageCompletionType) {
@@ -43,15 +43,16 @@ class ImageListItemModel: ImageListItemModelType {
             return
         }
         
-        Alamofire.request(imageUrl).responseImage { response in
-            if let image = response.result.value {
+        ImageLoader.loadImage(imageUrl: imageUrl, completion: { [weak self] result in
+            guard let `self` = self else { return }
+            
+            switch result {
+            case .result(let image):
                 completion(.result(image))
-            } else {
-                if let error = response.error {
-                    completion(.error(error))
-                }
+            case .error(let error):
+                completion(.error(error))
             }
-        }
+        })
     }
     
 }
@@ -64,7 +65,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet var bottomLabelContraint: NSLayoutConstraint!
     
     override func prepareForReuse() {
-        self.imageView = nil
+        self.imageView.image = nil
     }
     
     override func awakeFromNib() {
