@@ -11,7 +11,7 @@ import SkyFloatingLabelTextField
 
 class AddImageViewController: UIViewController, UINavigationControllerDelegate {
     
-    @IBOutlet weak var imageButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var descriptionTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var hashtagTextField: SkyFloatingLabelTextField!
     
@@ -20,24 +20,28 @@ class AddImageViewController: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupView()
         setupNavigationController()
+        setupView()
     }
     
     private func setupNavigationController() {
-        
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     private func setupView() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         self.view.addGestureRecognizer(tapGesture)
+        
+        let imageTap = UITapGestureRecognizer(target: self, action: #selector(selectImageTouchUpInside))
+        self.imageView.isUserInteractionEnabled = true
+        self.imageView.addGestureRecognizer(imageTap)
     }
     
     @objc func handleTap(_ sender: UIGestureRecognizer) {
         self.view.endEditing(true)
     }
     
-    @IBAction func selectImageTouchUpInside(_ sender: UIButton) {
+    @objc func selectImageTouchUpInside(_ sender: UIGestureRecognizer) {
         let imagePicker = UIImagePickerController()
         
         imagePicker.delegate = self
@@ -59,7 +63,7 @@ class AddImageViewController: UIViewController, UINavigationControllerDelegate {
             guard let `self` = self else { return }
             
             switch result {
-            case .result(let image):
+            case .result(let _):
                 self.navigationController?.popViewController(animated: true)
             case .error(let error):
                 AlertHelper.showAlert(error.localizedDescription)
@@ -81,10 +85,10 @@ extension AddImageViewController: UIImagePickerControllerDelegate {
             // TODO : - remove after tests
             if let image = ImageResizer.resizeImage(image: pickedImage, targetSize: CGSize(width: 600, height: 400)) {
                 viewModel.imageData = UIImagePNGRepresentation(image)
-                self.imageButton.setImage(image, for: .normal)
+                self.imageView.image = image
             } else {
                 viewModel.imageData = UIImagePNGRepresentation(pickedImage)
-                self.imageButton.setImage(pickedImage, for: .normal)
+                self.imageView.image = pickedImage
             }
             
 //            viewModel.imageData = UIImagePNGRepresentation(pickedImage)

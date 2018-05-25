@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ccD-Vu-X5F">
-    <device id="retina3_5" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -17,14 +17,14 @@
             <objects>
                 <viewController storyboardIdentifier="RegisterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="t6D-st-m5l" customClass="RegisterViewController" customModule="ImageGallery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HfZ-ez-pfg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zk5-22-Z2s">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zk5-22-Z2s">
+                                <rect key="frame" x="0.0" y="20" width="320" height="647"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hK4-VJ-fSX">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="588.5"/>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hK4-VJ-fSX">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="588.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="CameraPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="aQG-Vi-5KV">
                                                 <rect key="frame" x="75" y="77" width="240" height="128"/>
@@ -33,7 +33,7 @@
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LAv-xm-B1z" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="37.5" y="300" width="300" height="40"/>
+                                                <rect key="frame" x="37.5" y="356" width="245" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="dnt-6b-ngE"/>
@@ -67,7 +67,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OMM-Sr-if2" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="37.5" y="370.5" width="300" height="40"/>
+                                                <rect key="frame" x="37.5" y="426.5" width="245" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="xAi-PP-gKd"/>
@@ -101,7 +101,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QT4-wI-Tzb" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="37.5" y="440.5" width="300" height="40"/>
+                                                <rect key="frame" x="37.5" y="496.5" width="245" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="xwp-j4-8cg"/>
@@ -135,7 +135,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uye-7n-XMm">
-                                                <rect key="frame" x="37.5" y="520.5" width="300" height="48"/>
+                                                <rect key="frame" x="37.5" y="576.5" width="245" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="88y-N2-S2Z"/>
@@ -167,7 +167,7 @@
                                             <constraint firstItem="OMM-Sr-if2" firstAttribute="trailing" secondItem="LAv-xm-B1z" secondAttribute="trailing" id="Qj6-Nc-AL6"/>
                                             <constraint firstItem="QT4-wI-Tzb" firstAttribute="trailing" secondItem="OMM-Sr-if2" secondAttribute="trailing" id="TJo-vR-yQB"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Uye-7n-XMm" secondAttribute="bottom" constant="20" id="Tun-ok-8Mt"/>
-                                            <constraint firstItem="aQG-Vi-5KV" firstAttribute="width" secondItem="hK4-VJ-fSX" secondAttribute="width" multiplier="0.8" id="VWN-us-mqJ"/>
+                                            <constraint firstItem="aQG-Vi-5KV" firstAttribute="width" secondItem="hK4-VJ-fSX" secondAttribute="width" multiplier="0.5" id="VWN-us-mqJ"/>
                                             <constraint firstItem="OMM-Sr-if2" firstAttribute="leading" secondItem="LAv-xm-B1z" secondAttribute="leading" id="d4p-z8-Z9k"/>
                                             <constraint firstItem="LAv-xm-B1z" firstAttribute="top" secondItem="aQG-Vi-5KV" secondAttribute="bottom" constant="50" id="lJb-Zh-P35"/>
                                             <constraint firstItem="Uye-7n-XMm" firstAttribute="trailing" secondItem="QT4-wI-Tzb" secondAttribute="trailing" id="wdx-fb-pCt"/>
@@ -209,7 +209,7 @@
             <objects>
                 <navigationController id="ccD-Vu-X5F" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="skF-lv-jON">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -225,17 +225,17 @@
             <objects>
                 <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6P2-Y0-Ltu" customClass="LoginViewController" customModule="ImageGallery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Psn-lZ-iUG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HMy-Xk-bvP">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cbv-od-v0c">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="603"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RzW-gk-Tyx" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="50" y="150" width="275" height="40"/>
+                                                <rect key="frame" x="50" y="150" width="220" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="l07-0e-U2F"/>
@@ -269,7 +269,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hau-mi-ZPD" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="50" y="220" width="275" height="40"/>
+                                                <rect key="frame" x="50" y="220" width="220" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="H8g-V2-sBW"/>
@@ -303,7 +303,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zRQ-lY-ven">
-                                                <rect key="frame" x="50" y="290" width="275" height="48"/>
+                                                <rect key="frame" x="50" y="290" width="220" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="VYs-mq-AeP"/>
@@ -321,7 +321,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNr-dV-xNQ">
-                                                <rect key="frame" x="50" y="505" width="275" height="48"/>
+                                                <rect key="frame" x="50" y="505" width="220" height="48"/>
                                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="nhn-Ll-7V5"/>
