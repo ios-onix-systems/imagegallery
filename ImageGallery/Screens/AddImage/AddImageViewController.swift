@@ -62,7 +62,7 @@ class AddImageViewController: UIViewController, UINavigationControllerDelegate {
         
         present(imagePicker, animated: true, completion: nil)
     }
-    
+     
     @IBAction func submitButtonTouchUpInside(_ sender: UIButton) {
         guard let imageData = viewModel.imageData else { AlertHelper.showAlert("You need to select image first"); return }
         guard let longitude = viewModel.longitude, let latitude = viewModel.latitude else { AlertHelper.showAlert("Couldn't get current location"); return }
