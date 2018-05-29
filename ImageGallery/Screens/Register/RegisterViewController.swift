@@ -109,7 +109,7 @@ extension RegisterViewController: UIImagePickerControllerDelegate {
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])  {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            if let image = ImageResizer.resizeImage(image: pickedImage, targetSize: CGSize(width: 600, height: 400)) {
+            if let image = ImageResizer.resizeImage(image: pickedImage, targetSize: avatarImageView.frame.size) {
                 viewModel.avatar = UIImagePNGRepresentation(image)
                 self.avatarImageView.image = image
             } else {

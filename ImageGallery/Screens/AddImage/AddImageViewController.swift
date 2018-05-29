@@ -67,7 +67,7 @@ class AddImageViewController: UIViewController, UINavigationControllerDelegate {
         guard let imageData = viewModel.imageData else { AlertHelper.showAlert("You need to select image first"); return }
         guard let longitude = viewModel.longitude, let latitude = viewModel.latitude else { AlertHelper.showAlert("Couldn't get current location"); return }
         
-        let imageForm = ImageForm(image: imageData, description: descriptionTextField.text, hashtag: hashtagTextField.text, latitude: latitude, longitude: latitude)
+        let imageForm = ImageForm(image: imageData, description: descriptionTextField.text, hashtag: hashtagTextField.text, latitude: latitude, longitude: longitude)
         
         HUDRenderer.showHUD()
         viewModel.uploadImage(imageForm: imageForm, completion: { [weak self] result in
@@ -76,7 +76,7 @@ class AddImageViewController: UIViewController, UINavigationControllerDelegate {
                 guard let `self` = self else { return }
                 
                 switch result {
-                case .result(let _):
+                case .result( _):
                     self.navigationController?.popViewController(animated: true)
                 case .error(let error):
                     AlertHelper.showAlert(error.localizedDescription)
@@ -101,16 +101,16 @@ extension AddImageViewController: UIImagePickerControllerDelegate {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
             // TODO : - remove after tests
-            if let image = ImageResizer.resizeImage(image: pickedImage, targetSize: CGSize(width: 600, height: 400)) {
+            if let image = ImageResizer.resizeImage(image: pickedImage, targetSize: imageView.frame.size) {
                 viewModel.imageData = UIImagePNGRepresentation(image)
                 self.imageView.image = image
             } else {
                 viewModel.imageData = UIImagePNGRepresentation(pickedImage)
                 self.imageView.image = pickedImage
             }
-            
+
 //            viewModel.imageData = UIImagePNGRepresentation(pickedImage)
-//            self.imageButton.setImage(pickedImage, for: .normal)
+//            self.imageView.image = pickedImage
         }
         
        dismiss(animated: true, completion: nil)

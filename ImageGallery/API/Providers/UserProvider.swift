@@ -27,11 +27,11 @@ class UserProvider: UserProviderType {
         let request = CreateUserRequest(userForm: userForm)
         
         Alamofire.upload(multipartFormData: { (multipartFormData) in
-            multipartFormData.append(userForm.avatar, withName: "avatar", fileName: "image.png", mimeType: "image/png")
-            
             for (key, value) in request.parameters() {
                 multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
             }
+            
+            multipartFormData.append(userForm.avatar, withName: "avatar", fileName: "image.png", mimeType: "image/png")
         }, usingThreshold: UInt64.init(), to: request.url, method: request.method, headers: request.headers()) { (result) in
             switch result{
             case .success(let upload, _, _):
