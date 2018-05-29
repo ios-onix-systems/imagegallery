@@ -65,6 +65,10 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     
+    @IBAction func backTouchUpInside(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     deinit {
         print("RegisterViewController - deinit")
     }
