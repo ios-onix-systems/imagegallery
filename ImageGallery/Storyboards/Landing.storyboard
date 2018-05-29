@@ -26,6 +26,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMb-Q3-KL9">
                                         <rect key="frame" x="81" y="52" width="78" height="24"/>
                                         <state key="normal" title="Button" image="BackIcon"/>
+                                        <connections>
+                                            <action selector="backTouchUpInside:" destination="t6D-st-m5l" eventType="touchUpInside" id="kIh-XX-cim"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
