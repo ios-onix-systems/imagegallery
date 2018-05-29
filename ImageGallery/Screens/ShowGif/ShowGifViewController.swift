@@ -35,13 +35,15 @@ class ShowGifViewController: UIViewController {
         HUDRenderer.showHUD()
         
         viewModel.loadGifUrl(completion: { [weak self] result in
-            HUDRenderer.hideHUD()
-            
-            switch result {
-            case .result(let model):
-                self?.gifContainer.image = UIImage.gif(url: model.gif)
-            case .error(let error):
-                AlertHelper.showAlert(error.localizedDescription)
+            DispatchQueue.main.async {
+                HUDRenderer.hideHUD()
+                
+                switch result {
+                case .result(let model):
+                    self?.gifContainer.image = UIImage.gif(url: model.gif)
+                case .error(let error):
+                    AlertHelper.showAlert(error.localizedDescription)
+                }
             }
         })
     }

@@ -22,10 +22,22 @@ class AddImageViewController: UIViewController, UINavigationControllerDelegate {
         
         setupNavigationController()
         setupView()
+        bindModel()
     }
     
     private func setupNavigationController() {
         self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    private func bindModel() {
+        viewModel.subscribeOnLocationError(closure: { [weak self] error in
+            DispatchQueue.main.async {
+                guard let `self` = self else { return }
+                
+                AlertHelper.showAlert("Location service error")
+                self.navigationController?.popViewController(animated: true)
+            }
+        })
     }
     
     private func setupView() {
@@ -53,15 +65,9 @@ class AddImageViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBAction func submitButtonTouchUpInside(_ sender: UIButton) {
         guard let imageData = viewModel.imageData else { AlertHelper.showAlert("You need to select image first"); return }
+        guard let longitude = viewModel.longitude, let latitude = viewModel.latitude else { AlertHelper.showAlert("Couldn't get current location"); return }
         
-        if UIDevice.isSimulator {
-            viewModel.latitude = 0
-            viewModel.longitude = 0
-        } else {
-            guard let longitude = viewModel.longitude, let latitude = viewModel.latitude else { AlertHelper.showAlert("Couldn't get current location"); return }
-        }
-        
-        let imageForm = ImageForm(image: imageData, description: descriptionTextField.text, hashtag: hashtagTextField.text, latitude: viewModel.latitude!, longitude: viewModel.latitude!)
+        let imageForm = ImageForm(image: imageData, description: descriptionTextField.text, hashtag: hashtagTextField.text, latitude: latitude, longitude: latitude)
         
         HUDRenderer.showHUD()
         viewModel.uploadImage(imageForm: imageForm, completion: { [weak self] result in
@@ -77,6 +83,10 @@ class AddImageViewController: UIViewController, UINavigationControllerDelegate {
                 }
             }
         })
+    }
+    
+    @IBAction func backTouchUpInside(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     deinit {

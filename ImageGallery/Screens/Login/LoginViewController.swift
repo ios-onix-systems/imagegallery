@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
     }
     
     private func setupNavigationController() {
-        
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     private func setupView() {

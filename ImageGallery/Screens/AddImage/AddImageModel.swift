@@ -13,10 +13,15 @@ protocol AddImageModelType {
     var longitude: Double? { get set }
     var latitude: Double? { get set }
     
+    var closure: ((LocationErrorType) -> ())? { get }
+    
+    func subscribeOnLocationError(closure : @escaping (LocationErrorType) -> ())
     func uploadImage(imageForm: ImageForm, completion: @escaping ImageCompletionType)
 }
 
 class AddImageModel: AddImageModelType {
+    var closure: ((LocationErrorType) -> ())?
+    
     var imagesProvider: ImagesProviderType
     var locationService: LocationService
     
@@ -33,7 +38,13 @@ class AddImageModel: AddImageModelType {
             self.longitude = location.coordinate.longitude
         })
         
+        self.locationService.delegate = self
+        
         locationService.startRetrieveLocation()
+    }
+    
+    func subscribeOnLocationError(closure: @escaping (LocationErrorType) -> ()) {
+        self.closure = closure
     }
     
     func uploadImage(imageForm: ImageForm, completion: @escaping ImageCompletionType) {
@@ -52,6 +63,13 @@ class AddImageModel: AddImageModelType {
     deinit {
         print("AddImageViewModel - deinit")
     }
+}
+
+extension AddImageModel: LocationServiceProtocol {
+    func onError(e: LocationErrorType) {
+        self.closure?(e)
+    }
+    
 }
 
 class AddImageModelFactory {
