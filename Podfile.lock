@@ -1,0 +1,71 @@
+PODS:
+  - Alamofire (4.5.1)
+  - AlamofireImage (3.3.0):
+    - Alamofire (~> 4.5)
+  - Crashlytics (3.10.1):
+    - Fabric (~> 1.7.5)
+  - Differentiator (3.0.2)
+  - Fabric (1.7.6)
+  - IQKeyboardManagerSwift (6.0.3)
+  - MBProgressHUD (1.0.0)
+  - RxCocoa (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxCoreData (0.4.0):
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxDataSources (3.0.2):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxSwift (4.1.2)
+  - SkyFloatingLabelTextField (3.4.1)
+  - SwiftGifOrigin (1.6.1)
+
+DEPENDENCIES:
+  - Alamofire (= 4.5.1)
+  - AlamofireImage (= 3.3.0)
+  - Crashlytics
+  - Fabric
+  - IQKeyboardManagerSwift
+  - MBProgressHUD (= 1.0.0)
+  - RxCocoa (~> 4.1.2)
+  - RxCoreData
+  - RxDataSources (~> 3.0.2)
+  - RxSwift (~> 4.1.2)
+  - SkyFloatingLabelTextField (~> 3.0)
+  - SwiftGifOrigin (~> 1.6.1)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireImage
+    - Crashlytics
+    - Differentiator
+    - Fabric
+    - IQKeyboardManagerSwift
+    - MBProgressHUD
+    - RxCocoa
+    - RxCoreData
+    - RxDataSources
+    - RxSwift
+    - SkyFloatingLabelTextField
+    - SwiftGifOrigin
+
+SPEC CHECKSUMS:
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
+  Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
+  Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
+  Fabric: f8d42c893bb187326a7968b62abe55c36a987a46
+  IQKeyboardManagerSwift: 04e8679f85e496bb2c474eeb9284052f1b3c391c
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxCoreData: 3717ff29afb7261f8cff4b893ffb0650367d0fe6
+  RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
+  SkyFloatingLabelTextField: 8085f20f57f74a00cfcae58099299faa1a971035
+  SwiftGifOrigin: d6679d3ebe9df2e049a84bc52582635107b581f6
+
+PODFILE CHECKSUM: 11022be470d628c4c62ac63069655ec81bf3d92e
+
+COCOAPODS: 1.5.2
