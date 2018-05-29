@@ -20,9 +20,7 @@ class LoginModel: LoginModelType {
     }
     
     func confirmLogin(email: String, password: String, completion: @escaping UserCompletionType) {
-        userService.loginUser(email: email, password: password, completion: { [weak self] result in
-            guard let `self` = self else { return }
-            
+        userService.loginUser(email: email, password: password, completion: { result in
             switch result {
             case .result(let info):
                 completion(.result(info))

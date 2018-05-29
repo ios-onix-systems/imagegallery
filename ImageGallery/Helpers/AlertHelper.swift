@@ -13,8 +13,6 @@ class AlertHelper {
     
     class func showAlert(_ error: String) {
         
-        HUDRenderer.hideHUD()
-        
         if let root = UIApplication.shared.keyWindow?.rootViewController {
             let alertVC = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
             

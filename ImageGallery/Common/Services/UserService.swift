@@ -33,9 +33,7 @@ class UserService: UserServiceType {
     }
     
     func loginUser(email: String, password: String, completion: @escaping UserCompletionType) {
-        userProvider.login(email: email, password: password, completion: { [weak self] result in
-            guard let `self` = self else { return }
-            
+        userProvider.login(email: email, password: password, completion: { result in
             switch result {
             case .result(let info):
                 completion(.result(info))
@@ -46,9 +44,7 @@ class UserService: UserServiceType {
     }
     
     func registerUser(userForm: UserForm, completion: @escaping UserCompletionType) {
-        userProvider.register(userForm: userForm, completion: { [weak self] result in
-            guard let `self` = self else { return }
-            
+        userProvider.register(userForm: userForm, completion: { result in
             switch result {
             case .result(let info):
                 completion(.result(info))

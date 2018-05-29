@@ -55,6 +55,7 @@
 		E5870D6620B567C9004C1A5E /* Landing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5870D6520B567C9004C1A5E /* Landing.storyboard */; };
 		E5870D6920B567D0004C1A5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5870D6720B567CF004C1A5E /* LaunchScreen.storyboard */; };
 		E5870D6A20B567D0004C1A5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5870D6820B567CF004C1A5E /* Main.storyboard */; };
+		E5A2939D20BD876200E48787 /* ImageListItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A2939C20BD876200E48787 /* ImageListItemModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		E5870D6520B567C9004C1A5E /* Landing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Landing.storyboard; sourceTree = "<group>"; };
 		E5870D6720B567CF004C1A5E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5870D6820B567CF004C1A5E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		E5A2939C20BD876200E48787 /* ImageListItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListItemModel.swift; sourceTree = "<group>"; };
 		EC2825881FAF87BC346DB006 /* Pods-ImageGallery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageGallery.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImageGallery/Pods-ImageGallery.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -375,6 +377,7 @@
 			children = (
 				E5870D1F20B56633004C1A5E /* ImageCollectionViewCell.xib */,
 				E5870D2020B56633004C1A5E /* ImageCollectionViewCell.swift */,
+				E5A2939C20BD876200E48787 /* ImageListItemModel.swift */,
 			);
 			path = ImageCollectionViewCell;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				E5870D4820B56662004C1A5E /* HUDRenderer.swift in Sources */,
 				E5870D3B20B56655004C1A5E /* BaseRequest.swift in Sources */,
 				E5870CED20B5657F004C1A5E /* AppDelegate.swift in Sources */,
+				E5A2939D20BD876200E48787 /* ImageListItemModel.swift in Sources */,
 				E5870D5A20B56786004C1A5E /* AllImagesModel.swift in Sources */,
 				E5870D5920B56786004C1A5E /* AllImagesViewController.swift in Sources */,
 				E5870D2220B56633004C1A5E /* ImageCollectionViewCell.swift in Sources */,

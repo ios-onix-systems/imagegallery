@@ -59,9 +59,7 @@ class UserProvider: UserProviderType {
         let request = LoginRequest(email: email, password: password)
         
         Alamofire.request(request.url, method: request.method, parameters: request.parameters(), encoding: request.parametersEncoding, headers: request.headers())
-            .responseJSON(completionHandler: { [weak self] responce in
-                guard let `self` = self else { return }
-                
+            .responseJSON(completionHandler: { responce in
                 switch responce.result {
                 case .success( _):
                     guard let data = responce.data else { return }

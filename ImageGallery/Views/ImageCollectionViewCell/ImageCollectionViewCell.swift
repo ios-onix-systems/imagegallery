@@ -7,55 +7,7 @@
 //
 
 import UIKit
-import Alamofire
-import AlamofireImage
 
-enum UImageResult {
-    case result(UIImage)
-    case error(Error)
-}
-
-typealias UIImageCompletionType = (UImageResult) -> ()
-
-protocol ImageListItemModelType {
-    var address: String? { get }
-    var weather: String { get }
-    var image: UIImage? { get }
-    
-    func subscribeOnImageLoading(completion: @escaping UIImageCompletionType)
-}
-
-class ImageListItemModel: ImageListItemModelType {
-    var address: String?
-    var weather: String
-    var image: UIImage?
-    var imageUrl: String
-    
-    init(with model: Image) {
-        self.address = model.address
-        self.weather = model.weather ?? ""
-        self.imageUrl = model.bigImagePath ?? ""
-    }
-    
-    func subscribeOnImageLoading(completion: @escaping UIImageCompletionType) {
-        if let image = image {
-            completion(.result(image))
-            return
-        }
-        
-        ImageLoader.loadImage(imageUrl: imageUrl, completion: { [weak self] result in
-            guard let `self` = self else { return }
-            
-            switch result {
-            case .result(let image):
-                completion(.result(image))
-            case .error(let error):
-                completion(.error(error))
-            }
-        })
-    }
-    
-}
 
 class ImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
@@ -92,13 +44,13 @@ extension ImageCollectionViewCell {
             bottomLabelContraint.isActive = false
         }
         
-        model.subscribeOnImageLoading(completion: { [weak self] result in
+        model.loadImage(completion: { [weak self] result in
             guard let `self` = self else { return }
             
             switch result {
             case .result(let image):
                 self.imageView.image = image
-            case .error(let error):
+            case .error( _):
                 self.imageView.image = UIImage(named: "PlaceholderImage")
             }
         })

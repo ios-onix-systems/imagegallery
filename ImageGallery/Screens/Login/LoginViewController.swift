@@ -9,6 +9,11 @@
 import UIKit
 import SkyFloatingLabelTextField
 
+enum ValidationLoginFormResult {
+    case valid(email: String, password: String)
+    case error(String)
+}
+
 class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var passwordTextField: SkyFloatingLabelTextField!
@@ -56,7 +61,27 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func sendTouchUpInside(_ sender: UIButton) {
-        validate()
+        let validationLoginResult = validate()
+        
+        switch validationLoginResult {
+        case .valid(let email, let password):
+            HUDRenderer.showHUD()
+            viewModel.confirmLogin(email: email, password: password, completion: { [weak self] result in
+                DispatchQueue.main.async {
+                    HUDRenderer.hideHUD()
+                    guard let `self` = self else { return }
+                    
+                    switch result {
+                    case .result(let info):
+                        self.showImagesScreen(token: info)
+                    case .error(let error):
+                        AlertHelper.showAlert(error.localizedDescription)
+                    }
+                }
+            })
+        case .error(let error):
+            AlertHelper.showAlert(error)
+        }
     }
     
     @IBAction func registerTouchUpInside(_ sender: UIButton) {
@@ -71,28 +96,15 @@ extension LoginViewController: StoryboardIdentifiable {}
 
 extension LoginViewController {
     
-    @objc func validate() {
-        guard let email = emailTextField.text, email.count > 0 else { AlertHelper.showAlert("Please, enter email"); return }
-        guard let password = passwordTextField.text, password.count > 0 else { AlertHelper.showAlert("Please, enter password"); return }
+    func validate() -> ValidationLoginFormResult {
+        guard let email = emailTextField.text, email.count > 0 else { return .error("Please, enter email") }
+        guard let password = passwordTextField.text, password.count > 0 else { return .error("Please, enter password") }
         
         if !ValidationHelper.isValidEmail(email) {
-            AlertHelper.showAlert("Please, enter valid email")
-            return
+            return .error("Please, enter valid email")
         }
         
-        HUDRenderer.showHUD()
-        viewModel.confirmLogin(email: email, password: password, completion: { [weak self] result in
-            DispatchQueue.main.async {
-                HUDRenderer.hideHUD()
-                guard let `self` = self else { return }
-                
-                switch result {
-                case .result(let info):
-                    self.showImagesScreen(token: info)
-                case .error(let error):
-                    AlertHelper.showAlert(error.localizedDescription)
-                }
-            }
-        })
+        return .valid(email: email, password: password)
     }
+    
 }

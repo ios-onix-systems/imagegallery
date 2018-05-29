@@ -9,6 +9,11 @@
 import UIKit
 import SkyFloatingLabelTextField
 
+enum ValidationUserResult {
+    case user(UserForm)
+    case error(String)
+}
+
 class RegisterViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var userNameTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var emailTextField: SkyFloatingLabelTextField!
@@ -45,7 +50,28 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     @IBAction func sendButtonTouchUpInside(_ sender: UIButton) {
-        validate()
+        let validationResult = validate()
+        
+        switch validationResult {
+        case .user(let user):
+            HUDRenderer.showHUD()
+            viewModel.register(userForm: user, completion: { [weak self] result in
+                DispatchQueue.main.async {
+                    HUDRenderer.hideHUD()
+                    
+                    guard let `self` = self else { return }
+                    
+                    switch result {
+                    case .result(let info):
+                        self.showImagesScreen(token: info)
+                    case .error(let error):
+                        AlertHelper.showAlert(error.localizedDescription)
+                    }
+                }
+            })
+        case .error(let error):
+            AlertHelper.showAlert(error)
+        }
     }
     
     @objc func imageViewTouchUpInside(_ sender: UIGestureRecognizer) {
@@ -76,32 +102,19 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate {
 }
 
 extension RegisterViewController {
-    @objc func validate() {
-        guard let data = viewModel.avatar else { AlertHelper.showAlert("You need select avatar first"); return }
-        guard let email = emailTextField.text, email.count > 0 else { AlertHelper.showAlert("Please, enter email"); return }
-        guard let password = passwordTextField.text, password.count > 0 else { AlertHelper.showAlert("Please, enter password"); return }
+
+    func validate() -> ValidationUserResult {
+        guard let data = viewModel.avatar else { return .error("You need select avatar first") }
+        guard let email = emailTextField.text, email.count > 0 else { return .error("Please, enter email") }
+        guard let password = passwordTextField.text, password.count > 0 else { return .error("Please, enter password") }
         
         if !ValidationHelper.isValidEmail(email) {
-            AlertHelper.showAlert("Please, enter valid email")
-            return
+            return .error("Please, enter valid email")
         }
         
-        let user = UserForm(userName: userNameTextField.text, email: email, password: password, avatar: data)
-        
-        HUDRenderer.showHUD()
-        viewModel.register(userForm: user, completion: { [weak self] result in
-            DispatchQueue.main.async {
-                guard let `self` = self else { return }
-                
-                switch result {
-                case .result(let info):
-                    self.showImagesScreen(token: info)
-                case .error(let error):
-                    AlertHelper.showAlert(error.localizedDescription)
-                }
-            }
-        })
+        return .user(UserForm(userName: userNameTextField.text, email: email, password: password, avatar: data))
     }
+    
 }
 
 extension RegisterViewController: UIImagePickerControllerDelegate {

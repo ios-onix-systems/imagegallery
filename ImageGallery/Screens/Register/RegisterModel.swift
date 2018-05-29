@@ -23,8 +23,7 @@ class RegisterModel: RegisterModelType {
     }
     
     func register(userForm: UserForm, completion: @escaping UserCompletionType) {
-        userService.registerUser(userForm: userForm, completion: { [weak self] result in
-            guard let `self` = self else { return }
+        userService.registerUser(userForm: userForm, completion: { result in
             
             switch result {
             case .result(let info):

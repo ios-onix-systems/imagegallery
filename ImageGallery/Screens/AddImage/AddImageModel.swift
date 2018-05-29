@@ -48,9 +48,7 @@ class AddImageModel: AddImageModelType {
     }
     
     func uploadImage(imageForm: ImageForm, completion: @escaping ImageCompletionType) {
-        imagesProvider.uploadImage(imageForm: imageForm, completion: { [weak self] result in
-            guard let `self` = self else { return }
-            
+        imagesProvider.uploadImage(imageForm: imageForm, completion: { result in
             switch result {
             case .result(let image):
                 completion(.result(image))

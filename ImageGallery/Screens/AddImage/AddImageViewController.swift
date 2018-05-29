@@ -9,6 +9,11 @@
 import UIKit
 import SkyFloatingLabelTextField
 
+enum ImageFormValidationResult {
+    case valid(image: ImageForm)
+    case error(String)
+}
+
 class AddImageViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
@@ -64,25 +69,28 @@ class AddImageViewController: UIViewController, UINavigationControllerDelegate {
     }
      
     @IBAction func submitButtonTouchUpInside(_ sender: UIButton) {
-        guard let imageData = viewModel.imageData else { AlertHelper.showAlert("You need to select image first"); return }
-        guard let longitude = viewModel.longitude, let latitude = viewModel.latitude else { AlertHelper.showAlert("Couldn't get current location"); return }
         
-        let imageForm = ImageForm(image: imageData, description: descriptionTextField.text, hashtag: hashtagTextField.text, latitude: latitude, longitude: longitude)
+        let validationImageResult = validate()
         
-        HUDRenderer.showHUD()
-        viewModel.uploadImage(imageForm: imageForm, completion: { [weak self] result in
-            DispatchQueue.main.async {
-                HUDRenderer.hideHUD()
-                guard let `self` = self else { return }
-                
-                switch result {
-                case .result( _):
-                    self.navigationController?.popViewController(animated: true)
-                case .error(let error):
-                    AlertHelper.showAlert(error.localizedDescription)
+        switch validationImageResult {
+        case .valid(let imageForm):
+            HUDRenderer.showHUD()
+            viewModel.uploadImage(imageForm: imageForm, completion: { [weak self] result in
+                DispatchQueue.main.async {
+                    HUDRenderer.hideHUD()
+                    guard let `self` = self else { return }
+                    
+                    switch result {
+                    case .result( _):
+                        self.navigationController?.popViewController(animated: true)
+                    case .error(let error):
+                        AlertHelper.showAlert(error.localizedDescription)
+                    }
                 }
-            }
-        })
+            })
+        case .error(let error):
+            AlertHelper.showAlert(error)
+        }
     }
     
     @IBAction func backTouchUpInside(_ sender: UIButton) {
@@ -91,6 +99,15 @@ class AddImageViewController: UIViewController, UINavigationControllerDelegate {
     
     deinit {
         print("AddImageViewController - deinit")
+    }
+}
+
+extension AddImageViewController {
+    func validate() -> ImageFormValidationResult {
+        guard let imageData = viewModel.imageData else { return .error("You need to select image first") }
+        guard let longitude = viewModel.longitude, let latitude = viewModel.latitude else { return .error("Couldn't get current location") }
+        
+        return .valid(image: ImageForm(image: imageData, description: descriptionTextField.text, hashtag: hashtagTextField.text, latitude: latitude, longitude: longitude))
     }
 }
 

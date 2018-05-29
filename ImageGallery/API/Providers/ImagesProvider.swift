@@ -47,11 +47,9 @@ class ImagesProvider: ImagesProviderType {
         let request = GetImagesRequest(token: token.token)
         
         Alamofire.request(request.url, method: request.method, parameters: request.parameters(), encoding: request.parametersEncoding, headers: request.headers())
-            .responseJSON(completionHandler: { [weak self] responce in
-                guard let `self` = self else { return }
-                
+            .responseJSON(completionHandler: { responce in
                 switch responce.result {
-                case .success(let data):
+                case .success( _):
                     guard let data = responce.data else { return }
                     
                     if let parsedData = try? JSONDecoder().decode(ImagesList.self, from: data) {
@@ -97,7 +95,7 @@ class ImagesProvider: ImagesProviderType {
                     }
                 }
             case .failure(let error):
-                completion(.error(NSError(domain: "Couldn't upload image. Unrecognized error", code: -1, userInfo: nil)))
+                completion(.error(NSError(domain: error.localizedDescription, code: -1, userInfo: nil)))
             }
         }
     }
@@ -106,11 +104,10 @@ class ImagesProvider: ImagesProviderType {
         let request = GetGifRequest(token: token.token)
         
         Alamofire.request(request.url, method: request.method, parameters: request.parameters(), encoding: request.parametersEncoding, headers: request.headers())
-            .responseJSON(completionHandler: { [weak self] responce in
-                guard let `self` = self else { return }
+            .responseJSON(completionHandler: { responce in
                 
                 switch responce.result {
-                case .success(let data):
+                case .success( _):
                     guard let data = responce.data else { return }
                     
                     if let parsedData = try? JSONDecoder().decode(GIFModel.self, from: data) {

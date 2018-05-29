@@ -34,7 +34,7 @@ class AllImagesViewController: UIViewController {
                 switch result {
                 case .error(let error):
                     AlertHelper.showAlert(error.localizedDescription)
-                case .result(let images):
+                case .result( _):
                     self.collectionView.reloadData()
                 }
             }
