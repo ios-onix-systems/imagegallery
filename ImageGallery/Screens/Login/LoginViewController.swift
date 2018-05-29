@@ -82,14 +82,16 @@ extension LoginViewController {
         
         HUDRenderer.showHUD()
         viewModel.confirmLogin(email: email, password: password, completion: { [weak self] result in
-            HUDRenderer.hideHUD()
-            guard let `self` = self else { return }
-            
-            switch result {
-            case .result(let info):
-                self.showImagesScreen(token: info)
-            case .error(let error):
-                AlertHelper.showAlert(error.localizedDescription)
+            DispatchQueue.main.async {
+                HUDRenderer.hideHUD()
+                guard let `self` = self else { return }
+                
+                switch result {
+                case .result(let info):
+                    self.showImagesScreen(token: info)
+                case .error(let error):
+                    AlertHelper.showAlert(error.localizedDescription)
+                }
             }
         })
     }

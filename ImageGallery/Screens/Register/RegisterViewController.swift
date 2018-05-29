@@ -86,15 +86,16 @@ extension RegisterViewController {
         
         HUDRenderer.showHUD()
         viewModel.register(userForm: user, completion: { [weak self] result in
-            guard let `self` = self else { return }
-            
-            switch result {
-            case .result(let info):
-                self.showImagesScreen(token: info)
-            case .error(let error):
-                AlertHelper.showAlert(error.localizedDescription)
+            DispatchQueue.main.async {
+                guard let `self` = self else { return }
+                
+                switch result {
+                case .result(let info):
+                    self.showImagesScreen(token: info)
+                case .error(let error):
+                    AlertHelper.showAlert(error.localizedDescription)
+                }
             }
-            
         })
     }
 }

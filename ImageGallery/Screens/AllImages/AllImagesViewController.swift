@@ -26,15 +26,17 @@ class AllImagesViewController: UIViewController {
         HUDRenderer.showHUD()
         
         viewModel.getImages(completion: { [weak self] result in
-            HUDRenderer.hideHUD()
-            
-            guard let `self` = self else { return }
-            
-            switch result {
-            case .error(let error):
-                AlertHelper.showAlert(error.localizedDescription)
-            case .result(let images):
-                self.collectionView.reloadData()
+            DispatchQueue.main.async {
+                HUDRenderer.hideHUD()
+                
+                guard let `self` = self else { return }
+                
+                switch result {
+                case .error(let error):
+                    AlertHelper.showAlert(error.localizedDescription)
+                case .result(let images):
+                    self.collectionView.reloadData()
+                }
             }
         })
     }

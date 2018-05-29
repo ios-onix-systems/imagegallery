@@ -53,20 +53,28 @@ class AddImageViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBAction func submitButtonTouchUpInside(_ sender: UIButton) {
         guard let imageData = viewModel.imageData else { AlertHelper.showAlert("You need to select image first"); return }
-        //guard let longitude = viewModel.longitude, let latitude = viewModel.latitude else { AlertHelper.showAlert("Couldn't get current location"); return }
         
-        let imageForm = ImageForm(image: imageData, description: descriptionTextField.text, hashtag: hashtagTextField.text, latitude: 0, longitude: 0)
+        if UIDevice.isSimulator {
+            viewModel.latitude = 0
+            viewModel.longitude = 0
+        } else {
+            guard let longitude = viewModel.longitude, let latitude = viewModel.latitude else { AlertHelper.showAlert("Couldn't get current location"); return }
+        }
+        
+        let imageForm = ImageForm(image: imageData, description: descriptionTextField.text, hashtag: hashtagTextField.text, latitude: viewModel.latitude!, longitude: viewModel.latitude!)
         
         HUDRenderer.showHUD()
         viewModel.uploadImage(imageForm: imageForm, completion: { [weak self] result in
-            HUDRenderer.hideHUD()
-            guard let `self` = self else { return }
-            
-            switch result {
-            case .result(let _):
-                self.navigationController?.popViewController(animated: true)
-            case .error(let error):
-                AlertHelper.showAlert(error.localizedDescription)
+            DispatchQueue.main.async {
+                HUDRenderer.hideHUD()
+                guard let `self` = self else { return }
+                
+                switch result {
+                case .result(let _):
+                    self.navigationController?.popViewController(animated: true)
+                case .error(let error):
+                    AlertHelper.showAlert(error.localizedDescription)
+                }
             }
         })
     }
