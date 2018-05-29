@@ -39,7 +39,7 @@ class AddImageViewController: UIViewController, UINavigationControllerDelegate {
             DispatchQueue.main.async {
                 guard let `self` = self else { return }
                 
-                AlertHelper.showAlert("Location service error")
+                self.displayMessage(message: "Location service error")
                 self.navigationController?.popViewController(animated: true)
             }
         })
@@ -81,15 +81,15 @@ class AddImageViewController: UIViewController, UINavigationControllerDelegate {
                     guard let `self` = self else { return }
                     
                     switch result {
-                    case .result( _):
+                    case .result:
                         self.navigationController?.popViewController(animated: true)
                     case .error(let error):
-                        AlertHelper.showAlert(error.localizedDescription)
+                        self.displayMessage(message: error.localizedDescription)
                     }
                 }
             })
         case .error(let error):
-            AlertHelper.showAlert(error)
+            self.displayMessage(message: error)
         }
     }
     
@@ -101,6 +101,8 @@ class AddImageViewController: UIViewController, UINavigationControllerDelegate {
         print("AddImageViewController - deinit")
     }
 }
+
+extension AddImageViewController: AlertRenderer { }
 
 extension AddImageViewController {
     func validate() -> ImageFormValidationResult {

@@ -33,8 +33,8 @@ class AllImagesViewController: UIViewController {
                 
                 switch result {
                 case .error(let error):
-                    AlertHelper.showAlert(error.localizedDescription)
-                case .result( _):
+                    self.displayMessage(message: error.localizedDescription)
+                case .result:
                     self.collectionView.reloadData()
                 }
             }
@@ -83,6 +83,8 @@ class AllImagesViewController: UIViewController {
         print("AllImagesViewController - deinit")
     }
 }
+
+extension AllImagesViewController: AlertRenderer {}
 
 extension AllImagesViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {

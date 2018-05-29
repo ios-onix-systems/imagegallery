@@ -61,7 +61,7 @@ class UserProvider: UserProviderType {
         Alamofire.request(request.url, method: request.method, parameters: request.parameters(), encoding: request.parametersEncoding, headers: request.headers())
             .responseJSON(completionHandler: { responce in
                 switch responce.result {
-                case .success( _):
+                case .success:
                     guard let data = responce.data else { return }
                     
                     if let parsedData = try? JSONDecoder().decode(AuthInfo.self, from: data) {

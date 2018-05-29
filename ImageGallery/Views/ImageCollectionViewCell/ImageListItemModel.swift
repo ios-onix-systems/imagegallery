@@ -44,7 +44,7 @@ class ImageListItemModel: ImageListItemModelType {
             return
         }
         
-        ImageLoader.loadImage(imageUrl: imageUrl, completion: { result in
+        ImageLoaderHelper.loadImage(imageUrl: imageUrl, completion: { result in
             switch result {
             case .result(let image):
                 completion(.result(image))

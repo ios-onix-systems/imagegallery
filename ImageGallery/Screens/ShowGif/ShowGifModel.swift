@@ -32,7 +32,7 @@ class ShowGifModel: ShowGifModelType {
     }
     
     func loadGif(url: String, completion: @escaping UIImageCompletionType) {
-        ImageLoader.loadImage(imageUrl: url, completion: { result in
+        ImageLoaderHelper.loadImage(imageUrl: url, completion: { result in
             switch result {
             case .result(let image):
                 completion(.result(image))

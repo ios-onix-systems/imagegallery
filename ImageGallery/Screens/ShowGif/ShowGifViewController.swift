@@ -42,7 +42,7 @@ class ShowGifViewController: UIViewController {
                 case .result(let model):
                     self?.gifContainer.image = UIImage.gif(url: model.gif)
                 case .error(let error):
-                    AlertHelper.showAlert(error.localizedDescription)
+                    self?.displayMessage(message: error.localizedDescription)
                 }
             }
         })
@@ -55,4 +55,5 @@ class ShowGifViewController: UIViewController {
 
 }
 
+extension ShowGifViewController: AlertRenderer {}
 extension ShowGifViewController: StoryboardIdentifiable {}

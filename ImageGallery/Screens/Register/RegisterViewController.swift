@@ -65,12 +65,12 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate {
                     case .result(let info):
                         self.showImagesScreen(token: info)
                     case .error(let error):
-                        AlertHelper.showAlert(error.localizedDescription)
+                       self.displayMessage(message: error.localizedDescription)
                     }
                 }
             })
         case .error(let error):
-            AlertHelper.showAlert(error)
+            self.displayMessage(message: error)
         }
     }
     
@@ -100,6 +100,8 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate {
     }
     
 }
+
+extension RegisterViewController: AlertRenderer {}
 
 extension RegisterViewController {
 

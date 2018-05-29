@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-class ImageLoader {
+class ImageLoaderHelper {
     class func loadImage(imageUrl: String, completion: @escaping UIImageCompletionType) {
         Alamofire.request(imageUrl).responseImage { response in
             if let image = response.result.value {

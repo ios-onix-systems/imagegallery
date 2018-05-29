@@ -75,12 +75,12 @@ class LoginViewController: UIViewController {
                     case .result(let info):
                         self.showImagesScreen(token: info)
                     case .error(let error):
-                        AlertHelper.showAlert(error.localizedDescription)
+                        self.displayMessage(message: error.localizedDescription)
                     }
                 }
             })
         case .error(let error):
-            AlertHelper.showAlert(error)
+            self.displayMessage(message: error)
         }
     }
     
@@ -92,6 +92,7 @@ class LoginViewController: UIViewController {
     
 }
 
+extension LoginViewController: AlertRenderer {}
 extension LoginViewController: StoryboardIdentifiable {}
 
 extension LoginViewController {
